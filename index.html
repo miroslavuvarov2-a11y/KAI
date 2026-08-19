@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KAI — AI Chat</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand"><span class="logo">K</span><span>KAI</span></div>
+      <span class="status">● online</span>
+    </header>
+
+    <section id="chat" class="chat" aria-live="polite">
+      <div class="welcome">
+        <div class="big-logo">KAI</div>
+        <h1>Привет! 👋</h1>
+        <p>Простой чат без регистрации. Нажми 🎙️ для голосового режима.</p>
+      </div>
+    </section>
+
+    <form id="composer" class="composer">
+      <button id="voiceBtn" class="icon-btn" type="button" title="Голосовой ввод" aria-label="Голосовой ввод">🎙️</button>
+      <input id="message" autocomplete="off" placeholder="Напиши KAI сообщение...">
+      <button class="send-btn" type="submit">➤</button>
+    </form>
+    <div id="voiceStatus" class="voice-status"></div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
