@@ -4,6 +4,8 @@ const input = document.getElementById('message');
 const voiceBtn = document.getElementById('voiceBtn');
 const voiceStatus = document.getElementById('voiceStatus');
 
+const history = [];
+
 function addMessage(text, role) {
   const row = document.createElement('div');
   row.className = `message ${role}`;
@@ -16,26 +18,39 @@ function addMessage(text, role) {
   return row;
 }
 
-function localReply(text) {
-  const q = text.toLowerCase();
-  if (q.includes('привет') || q.includes('здрав')) return 'Привет! 👋 Я KAI. Сейчас я работаю в режиме интерфейса — подключи свой AI backend, чтобы получать настоящие ответы.';
-  if (q.includes('кто ты')) return 'Я KAI — интерфейс AI-чата с голосовым вводом. 🤖';
-  if (q.includes('голос')) return 'Нажми на 🎙️ и говори. Браузер распознает речь и вставит её в поле сообщения.';
-  return 'Сообщение получено! Для настоящих ответов KAI подключи API через безопасный серверный backend. 🔌';
+async function askKAI(text) {
+  history.push({ role: 'user', content: text });
+  const response = await fetch('http://127.0.0.1:31415/api/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ messages: history })
+  });
+
+  const data = await response.json();
+  if (!response.ok) throw new Error(data.error || 'Ошибка AI');
+
+  history.push({ role: 'assistant', content: data.content });
+  return data.content;
 }
 
-composer.addEventListener('submit', (e) => {
+composer.addEventListener('submit', async (e) => {
   e.preventDefault();
   const text = input.value.trim();
   if (!text) return;
+
   addMessage(text, 'user');
   input.value = '';
   const typing = addMessage('KAI печатает…', 'ai');
   typing.classList.add('typing');
-  setTimeout(() => {
+
+  try {
+    const answer = await askKAI(text);
     typing.remove();
-    addMessage(localReply(text), 'ai');
-  }, 450);
+    addMessage(answer, 'ai');
+  } catch (error) {
+    typing.remove();
+    addMessage(`Ошибка подключения к KAI: ${error.message}`, 'ai');
+  }
 });
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
