@@ -1,0 +1,31 @@
+{
+  "name": "kai-desktop",
+  "version": "1.0.0",
+  "description": "KAI — AI assistant desktop application",
+  "main": "main.js",
+  "author": "Krabir",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^39.2.7",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "net.kai-ai.desktop",
+    "productName": "KAI",
+    "files": [
+      "index.html",
+      "styles.css",
+      "app.js",
+      "main.js",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
