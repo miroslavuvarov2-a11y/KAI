@@ -5,7 +5,6 @@ const voiceBtn = document.getElementById('voiceBtn');
 const voiceStatus = document.getElementById('voiceStatus');
 
 const history = [];
-const KEY_NAME = 'kai_mistral_api_key';
 
 function addMessage(text, role) {
   const row = document.createElement('div');
@@ -19,17 +18,13 @@ function addMessage(text, role) {
   return row;
 }
 
-function getApiKey() {
-  let key = localStorage.getItem(KEY_NAME);
-  if (!key) {
-    key = window.prompt('🔑 Введи свой Mistral API Key. Он сохранится только в этом браузере:');
-    if (key) localStorage.setItem(KEY_NAME, key.trim());
-  }
+function askForApiKey() {
+  const key = window.prompt('🔑 Введи Mistral API Key для этого запроса:');
   return key ? key.trim() : '';
 }
 
 async function askKAI(text) {
-  const apiKey = getApiKey();
+  const apiKey = askForApiKey();
   if (!apiKey) throw new Error('Mistral API Key не введён.');
 
   history.push({ role: 'user', content: text });
@@ -39,14 +34,15 @@ async function askKAI(text) {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${apiKey}`
     },
-    body: JSON.stringify({ model: 'mistral-small-latest', messages: history, temperature: 0.7 })
+    body: JSON.stringify({
+      model: 'mistral-small-latest',
+      messages: history,
+      temperature: 0.7
+    })
   });
 
   const data = await response.json();
-  if (!response.ok) {
-    if (response.status === 401) localStorage.removeItem(KEY_NAME);
-    throw new Error(data?.message || data?.error?.message || `Mistral HTTP ${response.status}`);
-  }
+  if (!response.ok) throw new Error(data?.message || data?.error?.message || `Mistral HTTP ${response.status}`);
 
   const answer = data.choices?.[0]?.message?.content;
   if (!answer) throw new Error('Mistral не вернул ответ.');
