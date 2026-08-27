@@ -1,0 +1,58 @@
+proxies:
+  - name: 🇧🇷 Brazil
+    type: ss
+    server: 137.131.128.103
+    port: 59319
+    cipher: 2022-blake3-chacha20-poly1305
+    password: GGGJ69mNdkRpgCbE/lUZvtaebOqshKW8PVWgIUaaRHc=
+    udp: true
+
+  - name: 🇮🇳 India
+    type: vless
+    server: 194.61.31.126
+    port: 2053
+    uuid: 0bf89828-484f-4710-9581-12aa961e3bf1
+    tls: true
+    udp: true
+    network: raw
+    client-fingerprint: firefox
+    servername: www.apple.com
+    reality-opts:
+      public-key: Gy6W0bXf2bpxoG1k3szp8X0ekzoyXlEtzT8V4mYQ3EE
+      short-id: 29fe4205ddc971a8
+
+  - name: 🇯🇵 Japan
+    type: vless
+    server: 3.114.220.22
+    port: 50159
+    uuid: 814bd064-544d-4255-a070-5705c03f6da9
+    tls: true
+    udp: true
+    network: tcp
+    flow: xtls-rprx-vision
+    client-fingerprint: edge
+    servername: www.apple.com
+    reality-opts:
+      public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+      short-id: 48050fab
+
+proxy-groups:
+  - name: 🌍 VPN
+    type: select
+    proxies:
+      - AUTO
+      - 🇧🇷 Brazil
+      - 🇮🇳 India
+      - 🇯🇵 Japan
+
+  - name: AUTO
+    type: url-test
+    interval: 300
+    url: https://www.gstatic.com/generate_204
+    proxies:
+      - 🇧🇷 Brazil
+      - 🇮🇳 India
+      - 🇯🇵 Japan
+
+rules:
+  - MATCH,🌍 VPN
