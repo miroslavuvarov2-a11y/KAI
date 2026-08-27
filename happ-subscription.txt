@@ -1,6 +1,6 @@
 vless://11b7e901-e970-4491-9c7d-13c153e39e5b@177.3.213.230:5443?encryption=none&security=tls&sni=get.wlrus.cfd&fp=edge#🇧🇷 Brazil (YouTube)
 vless://9ce4c9e2-1dcc-abe8-9abf-9bf8bc1269f6@20.235.105.146:443?encryption=none&security=tls&sni=j.n.i.l.6.m.7.3.o.t.e.s.j.3.us.art-us.kdns.fr&type=ws&path=%2Fpg%2F10086-dfc816f117c49173&host=j.n.i.l.6.m.7.3.o.t.e.s.j.3.us.art-us.kdns.fr&fp=chrome#🇮🇳 India (Standard)
-vless://814bd064-544d-4255-a070-5705c03f6da9@3.114.220.22:50159?encryption=none&security=reality&sni=www.apple.com&fp=edge&pbk=k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0&sid=48050fab&type=tcp&flow=xtls-rprx-vision#🇯🇵 Japan (Fast)
+vless://ebd8539d-e249-4a39-8f90-e8585e8cc35e@116.80.44.144:27724?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.yahoo.co.jp&fp=chrome&pbk=rYH4wPTVzSwtpXgI3U7YxppIP6oudD-425vT7pyhj1w&type=tcp&headerType=none#🇯🇵 Japan (Fast)
 hysteria2://2vwMMy8t5Sjl5lfK9dNF1OrU9d0K25V2RNWLbTKwJ6o@89.125.156.80:443?sni=pixelcast.wwwinternetvideo.click&insecure=1#🇩🇪 Germany (EU)
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpvWklvQTY5UTh5aGhjUVY4a2EzUGEzQQ==@193.29.139.249:8080#🇳🇱 Netherlands (Standard)
 hysteria2://9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z@162.249.124.115:8080?sni=hopp-germany-new.ddnsguru.com&insecure=1#🇹🇷 Turkey (Brawl Stars)
