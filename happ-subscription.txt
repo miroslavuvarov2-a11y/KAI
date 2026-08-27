@@ -3,7 +3,7 @@ vless://9ce4c9e2-1dcc-abe8-9abf-9bf8bc1269f6@20.235.105.146:443?encryption=none&
 vless://ebd8539d-e249-4a39-8f90-e8585e8cc35e@116.80.44.144:27724?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.yahoo.co.jp&fp=chrome&pbk=rYH4wPTVzSwtpXgI3U7YxppIP6oudD-425vT7pyhj1w&type=tcp&headerType=none#🇯🇵 Japan (Fast)
 hysteria2://2vwMMy8t5Sjl5lfK9dNF1OrU9d0K25V2RNWLbTKwJ6o@89.125.156.80:443?sni=pixelcast.wwwinternetvideo.click&insecure=1#🇩🇪 Germany (EU)
 vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.34:23576?security=reality&type=tcp&sni=fuck.rkn&fp=chrome&flow=xtls-rprx-vision&sid=01&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&encryption=none#🇳🇱 Netherlands (Standard)
-hysteria2://9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z@162.249.124.115:8080?sni=hopp-germany-new.ddnsguru.com&insecure=1#🇹🇷 Turkey (Brawl Stars)
+vless://bef7acd0-8b81-431d-bcce-a76c3da658ae@sb1.artinnet.shop:443?security=reality&encryption=none&pbk=xyMx8lBZ6dn2EO6G3Alt_7bQueu_eZgQ4kZEbMFXL3E&headerType=none&fp=chrome&spx=%2FXzJUSkVgcj0tycU&type=tcp&sni=w.wiki&sid=ce#🇹🇷 Turkey (Brawl Stars)
 hysteria2://H7mP2xY9kJ4nQ8wR5tF6vB3z@103.115.109.49:443?insecure=1#🇹🇼 Taiwan (Alternative)
 ss://MjAyMi1ibGFrZTMtY2hhY2hhMjAtcG9seTEzMDU6M3hQUDZpTmZkTGd5ZFNHU1FlRXZYOEZDM3dvZlEzZTdHZ0dGVUg4TzFBbz0=@141.148.165.216:50356#🇺🇸 USA (Gaming)
 vless://12815cc0-a632-4b17-ab47-26ac2b16730f@185.8.172.140:443?encryption=none&security=none&type=tcp#🇵🇹 Portugal (EU)
