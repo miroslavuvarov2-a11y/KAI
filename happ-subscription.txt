@@ -4,6 +4,6 @@ vless://ebd8539d-e249-4a39-8f90-e8585e8cc35e@116.80.44.144:27724?encryption=none
 hysteria2://2vwMMy8t5Sjl5lfK9dNF1OrU9d0K25V2RNWLbTKwJ6o@89.125.156.80:443?sni=pixelcast.wwwinternetvideo.click&insecure=1#🇩🇪 Germany (EU)
 vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.34:23576?security=reality&type=tcp&sni=fuck.rkn&fp=chrome&flow=xtls-rprx-vision&sid=01&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGgEQKNxpZ3s&encryption=none#🇳🇱 Netherlands (Standard)
 vless://bef7acd0-8b81-431d-bcce-a76c3da658ae@sb1.artinnet.shop:443?security=reality&encryption=none&pbk=xyMx8lBZ6dn2EO6G3Alt_7bQueu_eZgQ4kZEbMFXL3E&headerType=none&fp=chrome&spx=%2FXzJUSkVgcj0tycU&type=tcp&sni=w.wiki&sid=ce#🇹🇷 Turkey (Brawl Stars)
-vless://7c74b0e4-f132-5583-4692-622a7d6b71a4@88.218.44.4:8443?security=reality&type=grpc&serviceName=TunService&mode=gun&sni=dl.google.com&fp=chrome&pbk=Rt2wltCWOxIroFggNWMudZDBJXls8DsF4icaWqxKDk8#🇺🇸 USA (VLESS)
+vless://84270e8b-567e-45c6-b2f2-56ec9a67ae1e@172.64.80.1:8880?host=young-leaf-a723.162-4da.workers.dev&path=%2Fpyip&security=none&type=ws#🇺🇸 USA (VLESS)
 vless://12815cc0-a632-4b17-ab47-26ac2b16730f@185.8.172.140:443?encryption=none&security=none&type=tcp#🇵🇹 Portugal (EU)
 vless://497631c4-a1a4-0023-a86a-f42873473bb6@46.243.183.34:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=auto.quattro-tech.ru&fp=edge&pbk=10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc&sid=43dcff31ed&type=tcp&headerType=none#🇧🇾 Belarus (Alternative)
