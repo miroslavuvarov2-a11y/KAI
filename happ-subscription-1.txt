@@ -1,3 +1,12 @@
+vless://11b7e901-e970-4491-9c7d-13c153e39e5b@177.3.213.230:5443?encryption=none&security=tls&sni=get.wlrus.cfd&fp=edge#🇧🇷 Brazil (YouTube)
+hysteria2://2vwMMy8t5Sjl5lfK9dNF1OrU9d0K25V2RNWLbTKwJ6o@89.125.156.80:443?sni=pixelcast.wwwinternetvideo.click&insecure=1#🇮🇳 India (Hysteria2)
+vless://696338ec-091d-4b41-b855-8f88d5b5d873@103.76.85.228:443?security=reality&encryption=none&pbk=oCsEp9srC8WQ7ZAsGSqD0QZ9MrNtIrUyllSZcgTfd28&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=www.apple.com&sid=b81f60db2e3d6346#🇯🇵 Japan (VLESS Reality TCP)
+hysteria2://2vwMMy8t5Sjl5lfK9dNF1OrU9d0K25V2RNWLbTKwJ6o@89.125.156.80:443?sni=pixelcast.wwwinternetvideo.click&insecure=1#🇩🇪 Germany (EU)
+vless://48ff2b70-e180-582f-8866-d9a2edeed5f5@51.158.206.34:23576?security=reality&type=tcp&sni=fuck.rkn&fp=chrome&flow=xtls-rprx-vision&sid=01&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGgEQKNxpZ3s&encryption=none#🇳🇱 Netherlands (Standard)
+vless://c6c03582-a4d2-4efe-9af1-83e730b11f9a@130.185.123.32:19896?security=&encryption=none&headerType=&type=tcp#🇹🇷 Turkey (VLESS)
+vless://497631c4-a1a4-0023-a86a-f42873473bb6@46.243.183.34:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=auto.quattro-tech.ru&fp=edge&pbk=10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc&sid=43dcff31ed&type=tcp&headerType=none#🇺🇸 USA (VLESS)
+vless://f651b25b-0a6a-4954-910f-7c07a1f6f664@31.129.22.64:47910?encryption=none&fp=chrome&pbk=UfNUyUPOiqRvjHvk4d5M1x8MTzYxDzb810fGH9CB_kQ&security=reality&sid=d194cf18101d98de&sni=yandex.ru&type=tcp#🇵🇹 Portugal (VLESS)
+vless://497631c4-a1a4-0023-a86a-f42873473bb6@46.243.183.34:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=auto.quattro-tech.ru&fp=edge&pbk=10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc&sid=43dcff31ed&type=tcp&headerType=none#🇧🇾 Belarus (Alternative)
 ss://MjAyMi1ibGFrZTMtY2hhY2hhMjAtcG9seTEzMDU6R0dHSjY5bU5ka1JwZ0NiRS9sVVp2dGFlYk9xc2hLVzhQVldnSVVhYVJIYz0@137.131.128.103:59319#Brazil
 vless://0bf89828-484f-4710-9581-12aa961e3bf1@194.61.31.126:2053?encryption=none&security=reality&sni=www.apple.com&fp=firefox&pbk=Gy6W0bXf2bpxoG1k3szp8X0ekzoyXlEtzT8V4mYQ3EE&sid=29fe4205ddc971a8&type=tcp#India
 vless://814bd064-544d-4255-a070-5705c03f6da9@3.114.220.22:50159?encryption=none&security=reality&sni=www.apple.com&fp=edge&pbk=k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0&sid=48050fab&type=tcp&flow=xtls-rprx-vision#Japan
