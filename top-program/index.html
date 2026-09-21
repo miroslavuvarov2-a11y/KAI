@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KAI — Top Program</title>
+<style>
+:root{--bg:#070711;--panel:#111120cc;--line:#292944;--text:#f7f7ff;--muted:#9292ad;--a:#9b6cff;--b:#5f8cff;--good:#65e6ad}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 20% 0,#24134d 0,transparent 34%),radial-gradient(circle at 100% 30%,#101d48 0,transparent 30%),var(--bg);color:var(--text);font:15px Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+.app{max-width:1180px;margin:auto;padding:28px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}.brand{display:flex;gap:12px;align-items:center}.logo{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--a),var(--b));font-weight:900;font-size:20px;box-shadow:0 0 35px #805cff55}.brand b{font-size:20px}.brand span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+button{border:0;color:white;cursor:pointer}.pill{background:#ffffff0d;border:1px solid var(--line);padding:10px 14px;border-radius:12px}
+.hero{padding:34px 0 26px}.hero h1{font-size:clamp(34px,6vw,68px);line-height:.98;margin:0 0 14px;letter-spacing:-3px}.grad{background:linear-gradient(90deg,#fff,#bda9ff,#75a6ff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{max-width:680px;color:#aaaac0;font-size:17px;line-height:1.55}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:linear-gradient(145deg,#151526dd,#0d0d19dd);border:1px solid var(--line);border-radius:20px;padding:20px;backdrop-filter:blur(16px);transition:.2s}.card:hover{transform:translateY(-3px);border-color:#6d5ba8}.icon{font-size:25px;margin-bottom:15px}.card h3{margin:0 0 8px;font-size:18px}.card p{color:var(--muted);line-height:1.5;margin:0 0 17px}.go{width:100%;padding:12px;border-radius:12px;background:linear-gradient(90deg,#704cff,#467cff);font-weight:700}
+.workspace{margin-top:14px;display:grid;grid-template-columns:1.5fr .8fr;gap:14px}.terminal{min-height:260px}.screen{height:170px;overflow:auto;background:#08080f;border:1px solid #24243a;border-radius:14px;padding:15px;color:#b9b9ce;font:13px ui-monospace,SFMono-Regular,Consolas,monospace}.cmd{display:flex;gap:8px;margin-top:10px}.cmd input{flex:1;background:#0b0b14;border:1px solid #292943;border-radius:12px;padding:12px;color:white;outline:none}.cmd button{padding:0 17px;border-radius:12px;background:#25243b}.stat{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #202033}.ok{color:var(--good)}footer{color:#65657b;text-align:center;padding:25px 0 5px;font-size:12px}
+@media(max-width:800px){.grid,.workspace{grid-template-columns:1fr}.app{padding:18px}.hero h1{letter-spacing:-2px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="brand"><div class="logo">K</div><div><b>KAI</b><span>Top Program</span></div></div><button class="pill" onclick="toggleTheme()">◐ UI</button></header>
+<section class="hero"><h1>Один файл.<br><span class="grad">Много возможностей.</span></h1><p>Компактный центр инструментов KAI: быстрые действия, мини-консоль и живой интерфейс — всё внутри одного HTML-файла, без библиотек и сборки.</p></section>
+<section class="grid">
+<div class="card"><div class="icon">⚡</div><h3>Quick Launch</h3><p>Мгновенный запуск встроенных действий интерфейса.</p><button class="go" onclick="log('⚡ Quick Launch запущен')">Запустить</button></div>
+<div class="card"><div class="icon">🧠</div><h3>KAI Core</h3><p>Локальная оболочка для будущих подключаемых инструментов и API.</p><button class="go" onclick="log('🧠 KAI Core готов к работе')">Проверить</button></div>
+<div class="card"><div class="icon">🛠️</div><h3>Tool Lab</h3><p>Место для экспериментов с функциями, которые можно добавить прямо в HTML.</p><button class="go" onclick="log('🛠️ Tool Lab открыт')">Открыть</button></div>
+</section>
+<section class="workspace">
+<div class="card terminal"><h3>⌘ Мини-консоль</h3><p>Напиши команду и нажми Enter. Попробуй: <b>help</b>, <b>ping</b>, <b>clear</b>.</p><div class="screen" id="out"><div>KAI Top Program v1.0</div><div>System ready.</div></div><div class="cmd"><input id="input" placeholder="Введите команду…" autocomplete="off"><button onclick="run()">↵</button></div></div>
+<div class="card"><h3>Состояние</h3><div class="stat"><span>Core</span><b class="ok">ONLINE</b></div><div class="stat"><span>UI</span><b class="ok">READY</b></div><div class="stat"><span>File</span><b>1 HTML</b></div><div class="stat"><span>Build</span><b>0 deps</b></div></div>
+</section>
+<footer>Made for KAI · single-file edition</footer>
+</div>
+<script>
+const out=document.getElementById('out'),input=document.getElementById('input');
+function log(s){out.innerHTML+='<div>'+s.replace(/[<>&]/g,m=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[m]))+'</div>';out.scrollTop=out.scrollHeight}
+function run(){const c=input.value.trim().toLowerCase();if(!c)return;log('> '+c);if(c==='help')log('Команды: help · ping · clear');else if(c==='ping')log('pong — KAI online ⚡');else if(c==='clear')out.innerHTML='';else log('Неизвестная команда. Введи help.');input.value=''}
+input.addEventListener('keydown',e=>{if(e.key==='Enter')run()});
+function toggleTheme(){document.body.style.filter=document.body.style.filter?'':'brightness(1.15)'}
+</script>
+</body>
+</html>
