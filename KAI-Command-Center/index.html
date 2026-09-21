@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KAI Command Center</title>
+<style>
+:root{--bg:#07070d;--panel:#10101a;--panel2:#151522;--line:#27263a;--text:#f7f7fb;--muted:#9291a7;--accent:#9b7cff;--accent2:#5dd6ff;--ok:#65e6a4;--danger:#ff6b88}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 75% 10%,#281d55 0,transparent 32%),radial-gradient(circle at 10% 90%,#102d45 0,transparent 30%),var(--bg);color:var(--text);font:15px Inter,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+button,input,textarea{font:inherit}button{cursor:pointer;color:inherit}.app{max-width:1180px;margin:auto;padding:28px 20px 40px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#090912;font-weight:900;font-size:20px;box-shadow:0 0 35px #8e73ff55}.brand b{font-size:20px}.brand span{display:block;color:var(--muted);font-size:12px;margin-top:2px}.clock{text-align:right}.clock b{font-size:20px}.clock small{display:block;color:var(--muted)}
+.grid{display:grid;grid-template-columns:1.3fr .7fr;gap:16px}.card{background:linear-gradient(180deg,#12121dE8,#0d0d16E8);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 18px 60px #0005;backdrop-filter:blur(14px)}.hero{min-height:210px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:230px;height:230px;border-radius:50%;right:-90px;top:-90px;background:#8f72ff22;filter:blur(4px)}h1{font-size:34px;margin:0 0 8px;letter-spacing:-1px}.sub{color:var(--muted);line-height:1.55}.status{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:8px 11px;border:1px solid #ffffff12;border-radius:999px;background:#ffffff06;color:#c9c7d9}.dot{width:8px;height:8px;background:var(--ok);border-radius:50%;box-shadow:0 0 12px var(--ok)}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.section-title b{font-size:16px}.section-title small{color:var(--muted)}
+.inputrow{display:flex;gap:9px;margin-bottom:12px}.inputrow input,.note{width:100%;background:#090911;border:1px solid var(--line);color:var(--text);outline:0;border-radius:12px;padding:11px 12px}.inputrow input:focus,.note:focus{border-color:var(--accent)}
+.primary,.ghost{border:0;border-radius:12px;padding:10px 14px;font-weight:700}.primary{background:linear-gradient(135deg,var(--accent),#6d9dff);color:#080810}.ghost{background:#ffffff08;border:1px solid var(--line)}
+.tasks{display:flex;flex-direction:column;gap:8px}.task{display:flex;align-items:center;gap:10px;padding:11px;border:1px solid #ffffff0b;border-radius:13px;background:#ffffff04}.task.done{opacity:.5;text-decoration:line-through}.task input{accent-color:var(--accent)}.task button{margin-left:auto;border:0;background:none;color:#77758a;font-size:17px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.stat{padding:14px;border-radius:15px;background:#ffffff05;border:1px solid #ffffff0a}.stat b{font-size:23px}.stat span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.note{min-height:150px;resize:vertical;line-height:1.5}.saved{color:var(--ok);font-size:12px;opacity:0;transition:.2s}.saved.show{opacity:1}
+.commands{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.cmd{padding:13px;border-radius:14px;border:1px solid var(--line);background:#ffffff05;text-align:left}.cmd:hover{border-color:#8f79ff66;background:#8f79ff0d}.cmd b{display:block}.cmd span{display:block;color:var(--muted);font-size:12px;margin-top:4px}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(20px);background:#181724;border:1px solid #37354b;padding:11px 15px;border-radius:12px;opacity:0;pointer-events:none;transition:.25s;box-shadow:0 15px 40px #0008}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:800px){.grid{grid-template-columns:1fr}.top{align-items:flex-start}.clock{display:none}}@media(max-width:500px){.app{padding:18px 12px}.card{padding:16px}.commands{grid-template-columns:1fr}h1{font-size:28px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="brand"><div class="logo">K</div><div><b>KAI Command Center</b><span>Personal control panel</span></div></div><div class="clock"><b id="time">--:--</b><small id="date">---</small></div></header>
+<section class="card hero"><h1>Добро пожаловать в KAI.</h1><div class="sub">Мини-центр управления, который работает прямо в браузере. Данные задач и заметок сохраняются локально.</div><div class="status"><i class="dot"></i>KAI Core • Online</div></section>
+<div style="height:16px"></div>
+<main class="grid">
+<div style="display:flex;flex-direction:column;gap:16px">
+<section class="card"><div class="section-title"><b>Задачи</b><small id="count">0 открыто</small></div><div class="inputrow"><input id="taskInput" placeholder="Что нужно сделать?" maxlength="120"><button class="primary" onclick="addTask()">Добавить</button></div><div class="tasks" id="tasks"></div></section>
+<section class="card"><div class="section-title"><b>Быстрые команды</b><small>⌘</small></div><div class="commands">
+<button class="cmd" onclick="focusTask()"><b>＋ Новая задача</b><span>Сразу перейти к вводу</span></button>
+<button class="cmd" onclick="clearDone()"><b>✓ Очистить выполненные</b><span>Убрать завершённые задачи</span></button>
+<button class="cmd" onclick="saveNote()"><b>💾 Сохранить заметку</b><span>Записать текст в память браузера</span></button>
+<button class="cmd" onclick="notify('KAI готов к работе 🤙')"><b>⚡ Проверка системы</b><span>Мгновенный статус ядра</span></button>
+</div></section>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<section class="card"><div class="section-title"><b>Память</b><span class="saved" id="saved">Сохранено</span></div><textarea id="note" class="note" placeholder="Оставь здесь идею, план или заметку..."></textarea></section>
+<section class="card"><div class="section-title"><b>Сегодня</b><small>KAI</small></div><div class="stats"><div class="stat"><b id="total">0</b><span>всего задач</span></div><div class="stat"><b id="done">0</b><span>готово</span></div><div class="stat"><b id="open">0</b><span>осталось</span></div></div></section>
+<section class="card"><div class="section-title"><b>Горячие клавиши</b></div><div class="sub">Enter — добавить задачу<br>Ctrl/Cmd + K — перейти к задачам<br>Ctrl/Cmd + S — сохранить заметку</div></section>
+</div>
+</main>
+</div><div class="toast" id="toast"></div>
+<script>
+const $=id=>document.getElementById(id);
+let tasks=JSON.parse(localStorage.getItem('kai_tasks')||'[]');
+$('note').value=localStorage.getItem('kai_note')||'';
+function persist(){localStorage.setItem('kai_tasks',JSON.stringify(tasks));render()}
+function render(){const box=$('tasks');box.innerHTML='';tasks.forEach((t,i)=>{const el=document.createElement('div');el.className='task'+(t.done?' done':'');el.innerHTML='<input type="checkbox" '+(t.done?'checked':'')+' onchange="toggleTask('+i+')"><span></span><button onclick="removeTask('+i+')">×</button>';el.querySelector('span').textContent=t.text;box.appendChild(el)});const done=tasks.filter(t=>t.done).length,open=tasks.length-done;$('total').textContent=tasks.length;$('done').textContent=done;$('open').textContent=open;$('count').textContent=open+' открыто'}
+function addTask(){const v=$('taskInput').value.trim();if(!v)return;tasks.unshift({text:v,done:false});$('taskInput').value='';persist();notify('Задача добавлена')}
+function toggleTask(i){tasks[i].done=!tasks[i].done;persist()}
+function removeTask(i){tasks.splice(i,1);persist()}
+function clearDone(){tasks=tasks.filter(t=>!t.done);persist();notify('Выполненные задачи очищены')}
+function focusTask(){$('taskInput').focus()}
+function saveNote(){localStorage.setItem('kai_note',$('note').value);$('saved').classList.add('show');setTimeout(()=>$('saved').classList.remove('show'),1200);notify('Заметка сохранена')}
+function notify(s){const t=$('toast');t.textContent=s;t.classList.add('show');clearTimeout(window._toast);window._toast=setTimeout(()=>t.classList.remove('show'),1800)}
+function tick(){const d=new Date();$('time').textContent=d.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});$('date').textContent=d.toLocaleDateString('ru-RU',{weekday:'short',day:'numeric',month:'long'})}tick();setInterval(tick,1000);
+$('taskInput').addEventListener('keydown',e=>{if(e.key==='Enter')addTask()});
+$('note').addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();saveNote()}});
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();focusTask()}});
+render();
+</script>
+</body>
+</html>
