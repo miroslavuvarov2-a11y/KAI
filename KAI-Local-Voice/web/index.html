@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KAI Local Voice</title>
+<style>
+body{font-family:system-ui;background:#111;color:#eee;max-width:820px;margin:50px auto;padding:20px}
+button{padding:15px 22px;border:0;border-radius:14px;font-size:18px;margin:5px;cursor:pointer}
+#status{margin:16px 0;color:#aaa}#log{white-space:pre-wrap;background:#19191d;border-radius:16px;padding:18px;min-height:260px;margin-top:20px}
+</style></head><body>
+<h1>🧠 KAI Local Voice</h1><div id="status">Проверяю Ollama...</div>
+<button onclick="start()">🎙️ Говорить</button><button onclick="stop()">⏹️ Стоп</button><div id="log"></div>
+<script>
+let recognition; const statusEl=document.getElementById("status"),logEl=document.getElementById("log");
+function log(t){logEl.textContent+=t+"\n";logEl.scrollTop=logEl.scrollHeight}
+fetch("/health").then(r=>r.json()).then(x=>statusEl.textContent=x.ollama?"🟢 KAI готов — "+x.model:"🔴 Ollama не запущена");
+function start(){
+ const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!SR){alert("Используй Chrome или Edge.");return}
+ recognition=new SR(); recognition.lang="ru-RU"; recognition.interimResults=false; recognition.continuous=false;
+ recognition.onstart=()=>statusEl.textContent="🎙️ Слушаю...";
+ recognition.onerror=e=>statusEl.textContent="Ошибка микрофона: "+e.error;
+ recognition.onresult=async e=>{
+   const text=e.results[0][0].transcript; log("Ты: "+text); statusEl.textContent="🧠 KAI думает...";
+   try{
+    const r=await fetch("/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages:[{role:"user",content:text}]})});
+    const result=await r.json(); log("KAI: "+result.text); speak(result.text); statusEl.textContent="🟢 Готов";
+   }catch(err){log("Ошибка: "+err);statusEl.textContent="🔴 Ошибка"}
+ };
+ recognition.start();
+}
+function stop(){if(recognition)recognition.stop()}
+function speak(text){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang="ru-RU";u.rate=1;speechSynthesis.speak(u)}
+</script></body></html>
